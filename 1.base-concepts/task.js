@@ -5,7 +5,7 @@ function solveEquation(a, b, c) {
 } else if (discriminant === 0) {
   return [-b/(2*a)];
 } else if (discriminant > 0) {
-  return [(-b + Math.sqrt(d) )/(2*a), (-b - Math.sqrt(d) )/(2*a)];;
+  return [(-b + Math.sqrt(a) )/(2*a), (-b - Math.sqrt(a) )/(2*a)];;
 }
 }
 solveEquation(1, 5, 4);
