@@ -14,8 +14,8 @@ function getArrayParams(arr) {
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
-  let avg = (sum / arr.length.toFixed(2));   
-  console.log(avg);
+  let avg = (sum / arr.length).toFixed(2);
+  avg = parseFloat(avg);
   let resObject = { max: max, min: min, avg: avg };
   return resObject;
 }
@@ -24,10 +24,8 @@ let arr2 = [-99, 99, 10];
 let result2 = getArrayParams(arr2);
 let result = getArrayParams(arr1);
 console.log(result);
-console.log(result2); 
-  //avg((sum / arr.length).toFixed(2));
-getArrayParams([-99, 99, 10]);
-getArrayParams([1, 2, 3, -100, 10]);
+console.log(result2);
+
 // Задание 2
 function worker(arr) {
   let sum = 0;
@@ -51,11 +49,8 @@ function makeWork(arrOfArr, worker) {
 }
 makeWork([[19,19,7], [44,18,7]], worker);
 console.log(makeWork([[19,19,7], [44,18,7]], worker));
-  
-
 // Задание 3
 function worker2(arr) {
-  arr = [-99, -3, 10];
   let max = -100;
   let min = 100;
   let diff;
@@ -64,9 +59,23 @@ function worker2(arr) {
       max = arr[i];
     } if (arr[i] < min) {
       min = arr[i];
-    }   
+    }
   }
   diff = (min - max);
-    console.log(diff);
+  diff = Math.abs(diff);
   return diff;
 }
+console.log(worker2([-1, -99]));
+function makeWork(arrOfArr, worker2) {
+  let max;
+  for (let i = 0; i < arrOfArr.length; i++) {
+    let sum = worker2(arrOfArr[i]);
+    max = worker2(arrOfArr[0]);
+    if (sum > max) {
+      max = sum;
+    }
+  }
+  return max;
+}
+makeWork([[-10, -20, -40], [10, 20, 30]], worker2)
+console.log(makeWork([[-10, -20, -40], [10, 20, 30]], worker2));
