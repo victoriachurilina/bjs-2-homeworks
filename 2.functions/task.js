@@ -1,8 +1,8 @@
 "use strict"
 // Задание 1
 function getArrayParams(arr) {
-  let max = -100;
-  let min = 100;
+  let max = -Infinity;
+  let min = Infinity;
   let sum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
@@ -14,10 +14,8 @@ function getArrayParams(arr) {
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
-  let avg = (sum / arr.length).toFixed(2);
-  avg = parseFloat(avg);
-  let resObject = { max: max, min: min, avg: avg };
-  return resObject;
+  let avg = parseFloat((sum / arr.length).toFixed(2));
+  return { max: max, min: min, avg: avg };
 }
 let arr1 = [1, 2, 3, -100, 10]
 let arr2 = [-99, 99, 10];
@@ -35,24 +33,24 @@ function worker(arr) {
 return sum;
 }
 worker([6, 4, 4]);
-console.log(worker([5,5,5]));
-function makeWork(arrOfArr, worker) {
+let func = worker;//ili worker2
+function makeWork(arrOfArr, func) {
   let max;
   for (let i = 0; i < arrOfArr.length; i++) {
-  let sum = worker(arrOfArr[i]);
-    max = worker(arrOfArr[0]);
+  let sum = func(arrOfArr[i]);
+    max = func(arrOfArr[0]);
     if (sum > max) {
       max = sum;
     }
   }
   return max;
 }
-makeWork([[19,19,7], [44,18,7]], worker);
-console.log(makeWork([[19,19,7], [44,18,7]], worker));
+makeWork([[19,19,7], [44,18,7]], func);
+console.log(makeWork([[19,19,7], [44,18,7]], func));
 // Задание 3
 function worker2(arr) {
-  let max = -100;
-  let min = 100;
+  let max = -Infinity;
+  let min = Infinity;
   let diff;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
@@ -66,16 +64,5 @@ function worker2(arr) {
   return diff;
 }
 console.log(worker2([-1, -99]));
-function makeWork(arrOfArr, worker2) {
-  let max;
-  for (let i = 0; i < arrOfArr.length; i++) {
-    let sum = worker2(arrOfArr[i]);
-    max = worker2(arrOfArr[0]);
-    if (sum > max) {
-      max = sum;
-    }
-  }
-  return max;
-}
-makeWork([[-10, -20, -40], [10, 20, 30]], worker2)
-console.log(makeWork([[-10, -20, -40], [10, 20, 30]], worker2));
+
+//Надеюсь, все правильно.. Спасибо, Владимир
