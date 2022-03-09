@@ -10,8 +10,6 @@ function getArrayParams(arr) {
     } if (arr[i] < min) {
       min = arr[i];
     }
-  }
-  for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
   let avg = parseFloat((sum / arr.length).toFixed(2));
@@ -35,10 +33,9 @@ return sum;
 worker([6, 4, 4]);
 let func = worker;//ili worker2
 function makeWork(arrOfArr, func) {
-  let max;
+ let max = func(arrOfArr[0]);
   for (let i = 0; i < arrOfArr.length; i++) {
   let sum = func(arrOfArr[i]);
-    max = func(arrOfArr[0]);
     if (sum > max) {
       max = sum;
     }
@@ -46,7 +43,7 @@ function makeWork(arrOfArr, func) {
   return max;
 }
 makeWork([[19,19,7], [44,18,7]], func);
-console.log(makeWork([[19,19,7], [44,18,7]], func));
+console.log(makeWork([[1900,19,7], [6400,180,700], [4400,180,700], [8900,19,7]], func));
 // Задание 3
 function worker2(arr) {
   let max = -Infinity;
@@ -65,4 +62,4 @@ function worker2(arr) {
 }
 console.log(worker2([-1, -99]));
 
-//Надеюсь, все правильно.. Спасибо, Владимир
+//Пару моментов исправила..func оставила, ведь можно и так, и через worker/worker2? Спасибо, Владимир
